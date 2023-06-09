@@ -34,7 +34,6 @@ const checkForNewMessages = () => {
       if (err) return console.log("The API returned an error: " + err);
 
       const messages = res.data.messages;
-
       if (messages?.length) {
         console.log("New message received!");
 
@@ -44,17 +43,18 @@ const checkForNewMessages = () => {
             userId: "me",
             id: message.id,
           });
+
           const threadId = messageDetails.data.threadId;
           const threadDetails = await gmail.users.threads.get({
             userId: "me",
             id: threadId,
           });
-
+          console.log(res.data);
           const updatedGmailLabel = await gmail.users.messages.modify({
             userId: "me", // if user is authenticated
-            id: res.data.id, // id of email
-            requestBody: {
-              addLabelIds: ["AUTO_RESPONSE"],
+            id: message.id, // id of email
+            resource: {
+              addLabelIds: ["Label_6"],
             },
           });
 
@@ -100,7 +100,7 @@ const checkForNewMessages = () => {
                 messageDetails.data.payload.headers.find(
                   (header) => header.name === "Subject"
                 ).value,
-              text: "Thank you for your message. I am on a vacation and will respond as soon as I am available",
+              text: "Thank you for your message. Yayyy ...I am on a vacation and will respond as soon as I am available",
             };
 
             transporter.sendMail(mailOptions, async (err, info) => {
