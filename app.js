@@ -147,28 +147,3 @@ function checkMessage() {
 
 // Start the initial invocation
 checkMessage();
-
-// const nodemailer = require("nodemailer");
-
-// const transporter = nodemailer.createTransport({
-//   service: "gmail",
-//   auth: {
-//     user: "ayushsurana3@gmail.com",
-//     pass: "lqozvatlrjdostwm",
-//   },
-// });
-
-// const mailOptions = {
-//   from: "ayushsurana3@gmail.com",
-//   to: "suranakavish@gmail.com",
-//   subject: "Nodemailer Test",
-//   html: "Test <button>sending</button> Gmail using Node JS",
-// };
-
-// transporter.sendMail(mailOptions, function (error, info) {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log("Email sent: " + info.response);
-//   }
-// });
